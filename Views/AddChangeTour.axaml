@@ -10,7 +10,7 @@
 	<StackPanel Orientation="Vertical">
 		<StackPanel Orientation="Horizontal">
 			<Button Command="{Binding GoBack}" Content="Назад"/>
-			<Button Command="" Content="Удалить"/>
+			<Button Command="{Binding DeleteTour}" Content="Удалить"/>
 		</StackPanel>
 		<TextBox Text="{Binding CurentTour.Name}" Watermark="Название"/>
 		<Panel Height="15"/>
@@ -18,7 +18,7 @@
 		<Panel Height="15"/>
 		<TextBox Text="{Binding CurentTour.Price}" Watermark="Стоимость"/>
 		<Panel Height="15"/>
-		<TextBox Text="{Binding CurentTour.Description}" Watermark="Описание"/>
+		<TextBox Text="{Binding CurentTour.Description}" Watermark="Описание" AcceptsReturn="True"/>
 		<Panel Height="15"/>
 		<ComboBox ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}">
 			<ComboBox.ItemTemplate>

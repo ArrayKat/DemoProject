@@ -74,10 +74,12 @@ namespace Demo2.ViewModels
         {
             ButtonResult result = await MessageBoxManager.GetMessageBoxStandard("Сообщение", "Хотите удалить тур?", ButtonEnum.YesNo).ShowAsync();
             if (result == ButtonResult.Yes) {
+                List<ToursType> deleteType = MainWindowViewModel.myConnection.ToursTypes.Where(t => t.Tour == CurentTour).ToList();
+                MainWindowViewModel.myConnection.ToursTypes.RemoveRange(deleteType);
                 MainWindowViewModel.myConnection.Tours.Remove(CurentTour);
                 MainWindowViewModel.myConnection.SaveChanges();
                 MainWindowViewModel.Instance.PageContent = new ShowTours();
-                MessageBoxManager.GetMessageBoxStandard("Сообщение", "Тур успешно удален", ButtonEnum.Ok);
+                MessageBoxManager.GetMessageBoxStandard("Сообщение", "Тур успешно удален", ButtonEnum.Ok).ShowAsync() ;
             }
         }
         public async void SaveChange() {
